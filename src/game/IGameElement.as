@@ -1,6 +1,5 @@
 package game 
 {
-	
 	/**
 	 * ...Public Interface For Game Elements
 	 * @author Leonid Trofimchuk

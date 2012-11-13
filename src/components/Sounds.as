@@ -5,6 +5,7 @@ package components
 	import flash.events.EventDispatcher;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	/**
 	 * ... Play sounds
 	 * @author Leonid Trofimchuk
@@ -20,7 +21,10 @@ package components
 		//Constructor
 		public function Sounds() 
 		{
-			soundCollision = (new sCollision) as Sound;
+			soundCollision = new sCollision as Sound;
+			//ActivateSound
+			sCollisionChannel = soundCollision.play(0, 0, new SoundTransform(0));
+			sCollisionChannel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 		}
 		
 //-------------------------------------------------------------------------------------------------
@@ -35,13 +39,12 @@ package components
 			sCollisionChannel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 		}
 		
-		
 //-------------------------------------------------------------------------------------------------
 //
 //	Event Handlers
 //
 //-------------------------------------------------------------------------------------------------	
-			
+		
 		private function onSoundComplete(e:Event):void 
 		{
 			var channel:SoundChannel;

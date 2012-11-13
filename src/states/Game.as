@@ -1,6 +1,7 @@
 package states
 {
 	import events.GameEvent;
+	import events.ModelEvent;
     import flash.display.Sprite;
 	import flash.filters.BitmapFilterQuality;
 	import flash.filters.BlurFilter;
@@ -17,13 +18,14 @@ package states
 		private var controller:Controller;
 		private var model:Model;
 		private var view:View;
-		private var _result:String;
+		private var _result:Object;
 		private var blur:BlurFilter;
 		
 		private var _withSound:Boolean;
 		
-		public function Game() 
+		public function Game(result:Object = null) 
 		{
+			_result = result;
 			enterState();
 			initBlur();
 		}
@@ -36,11 +38,12 @@ package states
 		
 		public function enterState():void 
 		{
-            model = new Model();
+            model = new Model(_result);
 			controller = new Controller(model);
 			view = new View(model, controller);
 			view.withSound = _withSound;
 			addChild(view);
+			model.addEventListener(ModelEvent.SCORE_GHANGED, model_scoreGhanged);
 			controller.addEventListener(GameEvent.CALL_MENU, controller_callMenu);
 		}
 		
@@ -49,6 +52,7 @@ package states
 			controller.stopGame();
 			removeGame();
 			removeChild(view);
+			model.removeEventListener(ModelEvent.SCORE_GHANGED, model_scoreGhanged);
 			controller.removeEventListener(GameEvent.CALL_MENU, controller_callMenu);
 			model = null;
 			controller = null;
@@ -96,6 +100,11 @@ package states
 			this.dispatchEvent(new GameEvent(GameEvent.CALL_MENU));
 		}
 		
+		private function model_scoreGhanged(e:ModelEvent):void 
+		{
+			dispatchEvent(e);
+		}
+		
 //-------------------------------------------------------------------------------------------------
 //
 //  Getters and Setters
@@ -113,9 +122,14 @@ package states
 			view.withSound = _withSound;
 		}
 		
-		public function get result():String
+		public function get result():Object
 		{
 			return _result;
+		}
+		
+		public function set result(value:Object):void
+		{
+			_result = value;
 		}
 	}
 

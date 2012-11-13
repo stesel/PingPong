@@ -1,4 +1,5 @@
-package {
+package 
+{
 	import components.InfoText;
 	import components.SimplePreloader;
 	import flash.display.DisplayObject;
@@ -39,13 +40,11 @@ package {
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			
-			
 			header = new InfoText(80, 0xffba16, true);
 			header.setText("Welcome");
 			header.x = (stage.stageWidth - header.width) / 2;
 			header.y = header.height * 1.7;
 			addChild(header);
-			//Add Listeners
 			
 			// TODO show loader
 			preloaderClip = new SimplePreloader();

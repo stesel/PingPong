@@ -58,21 +58,25 @@ package game
 		
 		public function update():void
 		{
+			//Change Position
 			this.x += _speedX;
 			this.y += _speedY;
 			
+			//Bounce
 			if (this.x < minX && _speedX < 0)
 			{
 				_speedX = - _speedX;
 				onSound();
 			}
-				
+			
+			//Bounce	
 			if (this.x > maxX && _speedX > 0)
 			{
 				_speedX = - _speedX;
 				onSound();
 			}
-				
+			
+			//CPU Missing	
 			if (this.y < minY)
 			{
 				this.x = stage.stageWidth / 2;
@@ -81,7 +85,8 @@ package game
 				_speedY = SPEED;
 				dispatchEvent(new GameEvent(GameEvent.BALL_MISSED, false, false, GameEvent.CPU_MISS));
 			}
-				
+			
+			//Player Missing	
 			if (this.y > maxY)
 			{
 				this.x = stage.stageWidth / 2;
@@ -135,8 +140,6 @@ package game
 		public function set withSound(value:Boolean):void
 		{
 			_withSound = value;
-			if (ball)
-				ball.withSound = _withSound;
 		}
 		
 		public function get speedX():Number

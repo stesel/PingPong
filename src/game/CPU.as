@@ -48,6 +48,7 @@ package game
 		
 		public function update():void
 		{
+			//CPU Logic
 			if ((this.x ) < (ball.x - CPU_SENS))
 				speedX = SPEED;
 			if ((this.x ) > (ball.x + CPU_SENS))
@@ -56,7 +57,8 @@ package game
 				speedX = 0;
 				
 			this.x += speedX;	
-				
+			
+			//Restriction
 			if (this.x < minX)
 				this.x = minX;
 				

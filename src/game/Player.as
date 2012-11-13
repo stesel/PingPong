@@ -47,6 +47,7 @@ package game
 		{
 			this.x = stage.mouseX;
 			
+			//Restriction
 			if (this.x < minX)
 				this.x = minX;
 				

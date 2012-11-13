@@ -9,7 +9,8 @@ package game
      */
     public class Model extends EventDispatcher 
 	{
-		private var _result: Object;				//Game Scores
+		private var _result: Object;					//Game Scores
+		
 		public function Model(result:Object = null) 
 		{
 			this._result = result;
@@ -21,7 +22,7 @@ package game
 //  Methods
 //
 //-------------------------------------------------------------------------------------------------
-	
+		
 		private function init():void 
 		{
 			if (_result == null)
@@ -48,6 +49,7 @@ package game
 			
 			dispatchEvent(new ModelEvent(ModelEvent.SCORE_GHANGED, false, false, result));
 		}
+		
 //--------------------------------------------------------------------------
 //
 //  Getters
@@ -59,6 +61,10 @@ package game
 			return _result;
 		}
 		
+		public function set result(value:Object):void
+		{
+			_result = value;
+		}
     }
 
 }

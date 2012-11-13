@@ -12,13 +12,11 @@ package game
 	 */
 	public class Controller extends EventDispatcher 
 	{
-        private var _container:Sprite;
 		private var _model:Model;
 		
 		public function Controller(model:Model = null) 
 		{
 			this._model = model;
-			startGame();
 		}
 		
 //-------------------------------------------------------------------------------------------------
@@ -26,11 +24,6 @@ package game
 //  Methods
 //
 //-------------------------------------------------------------------------------------------------
-		
-        public function startGame():void 
-		{
-			
-        }
 		
 		public function stopGame():void 
 		{
