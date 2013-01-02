@@ -75,13 +75,12 @@ package states
 
 //-------------------------------------------------------------------------------------------------
 //
-//  Interface  Methods definition
+//  Interface Methods definition
 //
 //-------------------------------------------------------------------------------------------------	
 		
 		public function enterState():void
 		{
-			
 			//Header
 			header = new InfoText(80, 0xffba16, true);
 			header.setText("Ping Pong");

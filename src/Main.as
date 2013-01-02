@@ -4,6 +4,10 @@ package
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	import flash.events.StageVideoAvailabilityEvent;
+	import flash.geom.Rectangle;
+	import flash.media.Camera;
+	import flash.media.StageVideo;
 	import states.StateManager;
 	/**
 	 * ...
@@ -16,6 +20,8 @@ package
 	{
 		
 		private var stateManager:StateManager;				 		//State Manager
+		
+		private var video:StageVideo;
 		
 		public function Main():void 
 		{
@@ -34,6 +40,23 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			
 			initStateManager();
+			
+			stage.addEventListener(StageVideoAvailabilityEvent.STAGE_VIDEO_AVAILABILITY, stage_stageVideoAvailability);
+			
+			
+		}
+		
+		private function stage_stageVideoAvailability(e:StageVideoAvailabilityEvent):void 
+		{
+			if(e.availability)
+				video = stage.stageVideos[0];
+				
+			var camera:Camera = Camera.getCamera();
+			if (video != null)
+			{
+				video.viewPort = new Rectangle(0, 0, 500, 600);
+				video.attachCamera(camera);
+			}
 		}
 		
 		private function initStateManager():void 

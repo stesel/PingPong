@@ -39,6 +39,7 @@ package states
 			result = { };
 			
 			localData = SharedObject.getLocal("result");
+			
 			if ((!localData.data.player && !localData.data.cpu) || (localData.data.player == 0 && localData.data.cpu == 0))
 			{
 				localData.data.player = 0;

@@ -13,7 +13,8 @@ package states
 	 * ...Game State
 	 * @author Leonid Trofimchuk
 	 */
-	public class Game extends Sprite implements IState{
+	public class Game extends Sprite implements IState
+	{
 
 		private var controller:Controller;
 		private var model:Model;
