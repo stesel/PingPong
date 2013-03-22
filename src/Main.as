@@ -43,7 +43,26 @@ package
 			
 			stage.addEventListener(StageVideoAvailabilityEvent.STAGE_VIDEO_AVAILABILITY, stage_stageVideoAvailability);
 			
+			var b:int;
+			b = 7 << 2;
+			b |= 0x1;
+			trace(b);
 			
+			var c:int;
+			c = b & 0x1;
+			trace(c);
+			
+			var d:int;
+			d = b >> 2;
+			trace(d);
+			
+			var f:int;
+			f = b ^ c;
+			trace(f);
+			
+			var g:int;
+			g = ~ c;
+			trace(g);
 		}
 		
 		private function stage_stageVideoAvailability(e:StageVideoAvailabilityEvent):void 
