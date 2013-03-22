@@ -9,6 +9,7 @@ package states
 	import flash.events.Event;
 	import flash.net.SharedObject;
 	import flash.system.fscommand;
+	import flash.system.System;
 	import flash.utils.setTimeout;
 	/**
 	 * ...	State Manager
@@ -116,7 +117,8 @@ package states
 			
 		private function closeApp():void 
 		{
-			fscommand("quit");
+			//fscommand("quit");
+			System.exit(0);
 		}
 		
 //-------------------------------------------------------------------------------------------------
